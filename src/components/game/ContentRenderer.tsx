@@ -40,8 +40,6 @@ export default function ContentRenderer({
           <SoundPlayer
             content={cell.content as SoundContent}
             onRevealAnswer={!isRevealed ? onRevealAnswer : undefined}
-            showMarkButton={isRevealed}
-            onMark={handleMark}
           />
         );
       }
@@ -65,9 +63,7 @@ export default function ContentRenderer({
           <ImageDisplay
             filename={cell.content}
             showRevealButton={!isRevealed}
-            showMarkButton={isRevealed}
             onReveal={handleReveal}
-            onMark={handleMark}
           />
         );
       }
@@ -91,9 +87,7 @@ export default function ContentRenderer({
           <TextDisplay
             text={cell.content}
             showRevealButton={!isRevealed}
-            showMarkButton={isRevealed}
             onReveal={handleReveal}
-            onMark={handleMark}
           />
         );
       }

@@ -6,8 +6,6 @@ import "./SoundPlayer.css";
 interface SoundPlayerProps {
   content: SoundContent;
   onRevealAnswer?: () => void;
-  showMarkButton?: boolean;
-  onMark?: (e: React.MouseEvent) => void;
 }
 
 /**
@@ -56,8 +54,6 @@ function extractVideoId(url: string): string | null {
 export default function SoundPlayer({
   content,
   onRevealAnswer,
-  showMarkButton,
-  onMark,
 }: SoundPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -160,12 +156,6 @@ export default function SoundPlayer({
     onRevealAnswer?.();
   };
 
-  // Manual mark button handler
-  const handleMarkClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent triggering cell click
-    onMark?.(e);
-  };
-
   // Error state
   if (!videoId) {
     return (
@@ -210,11 +200,6 @@ export default function SoundPlayer({
         {onRevealAnswer && (
           <button className="reveal-button" onClick={handleRevealClick}>
             Reveal Answer
-          </button>
-        )}
-        {showMarkButton && (
-          <button className="mark-button" onClick={handleMarkClick}>
-            Mark as Used
           </button>
         )}
         <div className="timestamp-info">

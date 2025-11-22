@@ -37,52 +37,33 @@ export default function GameScreen({
   onHeaderClick,
 }: GameScreenProps) {
   /**
-   * Handle cell click - cycle through 4 states
-   * State 1 (Unflipped): isFlipped=false, isRevealed=false, isMarked=false
-   * State 2 (Flipped): isFlipped=true, isRevealed=false, isMarked=false
-   * State 3 (Revealed): isFlipped=true, isRevealed=true, isMarked=false
-   * State 4 (Marked): isFlipped=true, isRevealed=true, isMarked=true
-   * Click on marked cell returns to unflipped state
+   * Handle cell click - cycle through 2 states
+   * State 1 (Unflipped): isFlipped=false, isRevealed=false
+   * State 2 (Revealed): isFlipped=true, isRevealed=true
+   * Once revealed, stays revealed
    */
   const handleCellClick = (row: number, col: number) => {
     const cell = boardData.cells[row][col];
     const isFlipped = cell.isFlipped ?? false;
     const isRevealed = cell.isRevealed ?? false;
-    const isMarked = cell.isMarked ?? false;
 
-    if (!isFlipped && !isRevealed && !isMarked) {
+    if (!isFlipped && !isRevealed) {
       // State 1 → State 2: Flip the cell
       onUpdateCell(row, col, {
         isFlipped: true,
         isRevealed: false,
-        isMarked: false,
       });
-    } else if (isFlipped && !isRevealed && !isMarked) {
-      // State 2 → State 3: Reveal the answer
+    } else if (isFlipped && !isRevealed) {
+      // State 2 → Reveal the answer
       // For text/image: click to reveal
       // For sound: only reveal button works (do nothing on click)
       if (cell.type !== "sound") {
         onUpdateCell(row, col, {
           isFlipped: true,
           isRevealed: true,
-          isMarked: false,
         });
       }
       // For sound cells, do nothing - they must use the reveal button
-    } else if (isRevealed && !isMarked) {
-      // State 3 → State 4: Mark the cell
-      onUpdateCell(row, col, {
-        isFlipped: true,
-        isRevealed: true,
-        isMarked: true,
-      });
-    } else if (isMarked) {
-      // State 4 → State 1: Reset to unflipped
-      onUpdateCell(row, col, {
-        isFlipped: false,
-        isRevealed: false,
-        isMarked: false,
-      });
     }
   };
 
@@ -93,18 +74,6 @@ export default function GameScreen({
     onUpdateCell(row, col, {
       isFlipped: true,
       isRevealed: true,
-      isMarked: false,
-    });
-  };
-
-  /**
-   * Handle mark as used - sets the marked state
-   */
-  const handleMarkAsUsed = (row: number, col: number) => {
-    onUpdateCell(row, col, {
-      isFlipped: true,
-      isRevealed: true,
-      isMarked: true,
     });
   };
 
@@ -129,7 +98,6 @@ export default function GameScreen({
                 cell={cell}
                 onCellClick={() => handleCellClick(rowIndex, colIndex)}
                 onRevealAnswer={() => handleRevealAnswer(rowIndex, colIndex)}
-                onMarkAsUsed={() => handleMarkAsUsed(rowIndex, colIndex)}
               />
             ))
           )}

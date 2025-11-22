@@ -4,9 +4,7 @@ import "./ImageDisplay.css";
 interface ImageDisplayProps {
   filename: string;
   showRevealButton?: boolean;
-  showMarkButton?: boolean;
   onReveal?: (e: React.MouseEvent) => void;
-  onMark?: (e: React.MouseEvent) => void;
 }
 
 /**
@@ -17,9 +15,7 @@ interface ImageDisplayProps {
 export default function ImageDisplay({
   filename,
   showRevealButton,
-  showMarkButton,
   onReveal,
-  onMark,
 }: ImageDisplayProps) {
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -59,18 +55,11 @@ export default function ImageDisplay({
         onLoad={handleImageLoad}
         onError={handleImageError}
       />
-      {!isLoading && (showRevealButton || showMarkButton) && (
+      {!isLoading && showRevealButton && (
         <div className="action-buttons">
-          {showRevealButton && (
-            <button className="reveal-button" onClick={onReveal}>
-              Reveal Answer
-            </button>
-          )}
-          {showMarkButton && (
-            <button className="mark-button" onClick={onMark}>
-              Mark as Used
-            </button>
-          )}
+          <button className="reveal-button" onClick={onReveal}>
+            Reveal Answer
+          </button>
         </div>
       )}
     </div>

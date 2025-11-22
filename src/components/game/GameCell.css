@@ -4,6 +4,8 @@
   min-height: 120px;
   cursor: pointer;
   position: relative;
+  width: 100%;
+  min-width: 0;
 }
 
 /* Game Cell - Main flip card with 3D transform */

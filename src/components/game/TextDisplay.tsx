@@ -3,9 +3,7 @@ import "./TextDisplay.css";
 interface TextDisplayProps {
   text: string;
   showRevealButton?: boolean;
-  showMarkButton?: boolean;
   onReveal?: (e: React.MouseEvent) => void;
-  onMark?: (e: React.MouseEvent) => void;
 }
 
 /**
@@ -16,9 +14,7 @@ interface TextDisplayProps {
 export default function TextDisplay({
   text,
   showRevealButton,
-  showMarkButton,
   onReveal,
-  onMark,
 }: TextDisplayProps) {
   // Handle empty text
   if (!text || text.trim().length === 0) {
@@ -33,18 +29,11 @@ export default function TextDisplay({
   return (
     <div className="text-display">
       <p className="display-text">{text}</p>
-      {(showRevealButton || showMarkButton) && (
+      {showRevealButton && (
         <div className="action-buttons">
-          {showRevealButton && (
-            <button className="reveal-button" onClick={onReveal}>
-              Reveal Answer
-            </button>
-          )}
-          {showMarkButton && (
-            <button className="mark-button" onClick={onMark}>
-              Mark as Used
-            </button>
-          )}
+          <button className="reveal-button" onClick={onReveal}>
+            Reveal Answer
+          </button>
         </div>
       )}
     </div>
