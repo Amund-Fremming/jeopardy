@@ -37,6 +37,7 @@ const createInitialBoardData = (): BoardData => {
         type: "text",
         content: "", // Empty string for text/image types
         isFlipped: false,
+        isRevealed: false,
         isMarked: false,
       });
     }
@@ -85,6 +86,18 @@ export const useBoardState = (): UseBoardStateReturn => {
   // Initialize board data from localStorage or create new
   const [boardData, setBoardData] = useState<BoardData>(() => {
     const loaded = loadBoardData();
+
+    // Clean up any stale isRevealed states from localStorage
+    if (loaded) {
+      loaded.cells.forEach((row) => {
+        row.forEach((cell) => {
+          if (cell.isRevealed !== false) {
+            cell.isRevealed = false;
+          }
+        });
+      });
+    }
+
     return loaded || createInitialBoardData();
   });
 

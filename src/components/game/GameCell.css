@@ -6,6 +6,8 @@
   position: relative;
   width: 100%;
   min-width: 0;
+  pointer-events: auto !important;
+  z-index: 10;
 }
 
 /* Game Cell - Main flip card with 3D transform */
@@ -155,4 +157,35 @@
 .game-cell-container:active .game-cell-front,
 .game-cell-container:active .game-cell-back {
   border-color: var(--orange-active);
+}
+
+/* Flip Button - Shows under unflipped cards */
+.flip-button {
+  background-color: var(--orange-primary);
+  color: var(--text-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  pointer-events: auto;
+  z-index: 100;
+  position: relative;
+}
+
+.flip-button:hover {
+  background-color: var(--orange-hover);
+  box-shadow: var(--shadow-md), var(--shadow-glow-sm);
+  transform: translateY(-1px);
+}
+
+.flip-button:active {
+  background-color: var(--orange-active);
+  transform: translateY(0);
 }

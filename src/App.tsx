@@ -107,11 +107,15 @@ function App() {
    * Navigate to editor and reset cell states
    */
   const navigateToEditor = () => {
-    // Reset all cell states (isFlipped and isMarked) to false
+    // Reset all cell states (isFlipped, isRevealed, and isMarked) to false
     boardData.cells.forEach((row, rowIndex) => {
       row.forEach((cell, colIndex) => {
-        if (cell.isFlipped || cell.isMarked) {
-          updateCell(rowIndex, colIndex, { isFlipped: false, isMarked: false });
+        if (cell.isFlipped || cell.isRevealed || cell.isMarked) {
+          updateCell(rowIndex, colIndex, {
+            isFlipped: false,
+            isRevealed: false,
+            isMarked: false,
+          });
         }
       });
     });

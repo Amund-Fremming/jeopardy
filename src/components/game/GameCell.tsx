@@ -26,15 +26,30 @@ export default function GameCell({
   // Show flipped state when flipped
   const shouldShowFlipped = isFlipped;
 
-  // Only allow clicking on unflipped cells
+  // Allow clicking to flip or reveal (not when already revealed)
   const handleClick = () => {
-    if (!isFlipped) {
+    console.log(`🔵 GameCell handleClick - value:$${cell.value}`, {
+      isFlipped,
+      isRevealed,
+    });
+    if (!isRevealed) {
       onCellClick();
+    } else {
+      console.log(`🚫 Click blocked - cell already revealed`);
     }
   };
 
+  const handleMouseEnter = () => {
+    console.log(`🟡 HOVER on $${cell.value}`);
+  };
+
   return (
-    <div className="game-cell-container" onClick={handleClick}>
+    <div
+      className="game-cell-container"
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      style={{ border: "2px solid cyan" }} /* DEBUG: Visual indicator */
+    >
       <div className={`game-cell ${shouldShowFlipped ? "flipped" : ""}`}>
         {/* Front Face - Dollar Amount */}
         <div className="game-cell-front">

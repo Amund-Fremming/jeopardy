@@ -47,8 +47,16 @@ export default function GameScreen({
     const isFlipped = cell.isFlipped ?? false;
     const isRevealed = cell.isRevealed ?? false;
 
+    console.log(`🎯 Click on cell [${row}][${col}] value:$${cell.value}`, {
+      currentState: { isFlipped, isRevealed },
+      cellType: cell.type,
+      hasContent: !!cell.content,
+      hasAnswer: !!cell.answer,
+    });
+
     if (!isFlipped && !isRevealed) {
       // State 1 → State 2: Flip the cell
+      console.log(`✅ FLIPPING cell [${row}][${col}]`);
       onUpdateCell(row, col, {
         isFlipped: true,
         isRevealed: false,
@@ -58,12 +66,16 @@ export default function GameScreen({
       // For text/image: click to reveal
       // For sound: only reveal button works (do nothing on click)
       if (cell.type !== "sound") {
+        console.log(`✅ REVEALING answer for cell [${row}][${col}]`);
         onUpdateCell(row, col, {
           isFlipped: true,
           isRevealed: true,
         });
+      } else {
+        console.log(`⏸️ Sound cell - use reveal button`);
       }
-      // For sound cells, do nothing - they must use the reveal button
+    } else {
+      console.log(`🛑 Cell already revealed, no action`);
     }
   };
 
