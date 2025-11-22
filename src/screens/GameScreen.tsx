@@ -37,56 +37,20 @@ export default function GameScreen({
   onHeaderClick,
 }: GameScreenProps) {
   /**
-   * Handle cell click - cycle through 2 states
-   * State 1 (Unflipped): isFlipped=false, isRevealed=false
-   * State 2 (Revealed): isFlipped=true, isRevealed=true
-   * Once revealed, stays revealed
+   * Handle cell click - simple flip to show content
+   * State 1 (Unflipped): isFlipped=false
+   * State 2 (Flipped): isFlipped=true (shows content)
+   * Once flipped, stays flipped
    */
   const handleCellClick = (row: number, col: number) => {
     const cell = boardData.cells[row][col];
     const isFlipped = cell.isFlipped ?? false;
-    const isRevealed = cell.isRevealed ?? false;
 
-    console.log(`🎯 Click on cell [${row}][${col}] value:$${cell.value}`, {
-      currentState: { isFlipped, isRevealed },
-      cellType: cell.type,
-      hasContent: !!cell.content,
-      hasAnswer: !!cell.answer,
-    });
-
-    if (!isFlipped && !isRevealed) {
-      // State 1 → State 2: Flip the cell
-      console.log(`✅ FLIPPING cell [${row}][${col}]`);
+    if (!isFlipped) {
       onUpdateCell(row, col, {
         isFlipped: true,
-        isRevealed: false,
       });
-    } else if (isFlipped && !isRevealed) {
-      // State 2 → Reveal the answer
-      // For text/image: click to reveal
-      // For sound: only reveal button works (do nothing on click)
-      if (cell.type !== "sound") {
-        console.log(`✅ REVEALING answer for cell [${row}][${col}]`);
-        onUpdateCell(row, col, {
-          isFlipped: true,
-          isRevealed: true,
-        });
-      } else {
-        console.log(`⏸️ Sound cell - use reveal button`);
-      }
-    } else {
-      console.log(`🛑 Cell already revealed, no action`);
     }
-  };
-
-  /**
-   * Handle reveal answer for sound cells
-   */
-  const handleRevealAnswer = (row: number, col: number) => {
-    onUpdateCell(row, col, {
-      isFlipped: true,
-      isRevealed: true,
-    });
   };
 
   return (
@@ -109,7 +73,6 @@ export default function GameScreen({
                 key={`cell-${rowIndex}-${colIndex}`}
                 cell={cell}
                 onCellClick={() => handleCellClick(rowIndex, colIndex)}
-                onRevealAnswer={() => handleRevealAnswer(rowIndex, colIndex)}
               />
             ))
           )}

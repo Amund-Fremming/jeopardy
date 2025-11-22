@@ -5,7 +5,6 @@ import "./SoundPlayer.css";
 
 interface SoundPlayerProps {
   content: SoundContent;
-  onRevealAnswer?: () => void;
 }
 
 /**
@@ -51,10 +50,7 @@ function extractVideoId(url: string): string | null {
  * Plays YouTube videos with start and end timestamp controls
  * Uses react-youtube library with manual play button and auto-stop at end time
  */
-export default function SoundPlayer({
-  content,
-  onRevealAnswer,
-}: SoundPlayerProps) {
+export default function SoundPlayer({ content }: SoundPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const playerRef = useRef<YouTubePlayer | null>(null);
@@ -150,12 +146,6 @@ export default function SoundPlayer({
     }
   };
 
-  // Manual reveal button handler
-  const handleRevealClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent triggering cell click
-    onRevealAnswer?.();
-  };
-
   // Error state
   if (!videoId) {
     return (
@@ -197,11 +187,6 @@ export default function SoundPlayer({
         >
           {isPlaying ? "▶ Playing..." : "▶ Play Clip"}
         </button>
-        {onRevealAnswer && (
-          <button className="reveal-button" onClick={handleRevealClick}>
-            Reveal Answer
-          </button>
-        )}
         <div className="timestamp-info">
           {content.start}s - {content.end}s
         </div>

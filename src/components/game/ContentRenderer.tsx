@@ -5,8 +5,6 @@ import TextDisplay from "./TextDisplay";
 
 interface ContentRendererProps {
   cell: Cell;
-  onRevealAnswer?: () => void;
-  onMarkAsUsed?: () => void;
 }
 
 /**
@@ -14,34 +12,12 @@ interface ContentRendererProps {
  * Switches between different content types (sound/image/text)
  * Renders the appropriate display component based on cell type
  */
-export default function ContentRenderer({
-  cell,
-  onRevealAnswer,
-  onMarkAsUsed,
-}: ContentRendererProps) {
-  const isRevealed = cell.isRevealed ?? false;
-
-  // Create handlers that stop event propagation
-  const handleReveal = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onRevealAnswer?.();
-  };
-
-  const handleMark = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onMarkAsUsed?.();
-  };
-
+export default function ContentRenderer({ cell }: ContentRendererProps) {
   switch (cell.type) {
     case "sound":
       // Type guard: ensure content is SoundContent
       if (typeof cell.content === "object" && "url" in cell.content) {
-        return (
-          <SoundPlayer
-            content={cell.content as SoundContent}
-            onRevealAnswer={!isRevealed ? onRevealAnswer : undefined}
-          />
-        );
+        return <SoundPlayer content={cell.content as SoundContent} />;
       }
       // Fallback for invalid sound content
       return (
@@ -59,13 +35,7 @@ export default function ContentRenderer({
     case "image":
       // Type guard: ensure content is string
       if (typeof cell.content === "string") {
-        return (
-          <ImageDisplay
-            filename={cell.content}
-            showRevealButton={!isRevealed}
-            onReveal={handleReveal}
-          />
-        );
+        return <ImageDisplay filename={cell.content} />;
       }
       // Fallback for invalid image content
       return (
@@ -83,13 +53,7 @@ export default function ContentRenderer({
     case "text":
       // Type guard: ensure content is string
       if (typeof cell.content === "string") {
-        return (
-          <TextDisplay
-            text={cell.content}
-            showRevealButton={!isRevealed}
-            onReveal={handleReveal}
-          />
-        );
+        return <TextDisplay text={cell.content} />;
       }
       // Fallback for invalid text content
       return (

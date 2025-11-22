@@ -5,51 +5,28 @@ import "./GameCell.css";
 interface GameCellProps {
   cell: Cell;
   onCellClick: () => void;
-  onRevealAnswer?: () => void;
 }
 
 /**
- * GameCell component with 2-state logic:
+ * GameCell component - simple flip to show content
  * State 1 (Unflipped): Show dollar amount
- * State 2 (Revealed): Show content with green answer overlay - stays this way
- *
- * Interaction: Unflipped (click) → Flipped (click or reveal button) → Revealed (stays)
+ * State 2 (Flipped): Show content (image/text/sound) - stays flipped
  */
-export default function GameCell({
-  cell,
-  onCellClick,
-  onRevealAnswer,
-}: GameCellProps) {
+export default function GameCell({ cell, onCellClick }: GameCellProps) {
   const isFlipped = cell.isFlipped ?? false;
-  const isRevealed = cell.isRevealed ?? false;
 
   // Show flipped state when flipped
   const shouldShowFlipped = isFlipped;
 
-  // Allow clicking to flip or reveal (not when already revealed)
+  // Allow clicking only when not flipped
   const handleClick = () => {
-    console.log(`🔵 GameCell handleClick - value:$${cell.value}`, {
-      isFlipped,
-      isRevealed,
-    });
-    if (!isRevealed) {
+    if (!isFlipped) {
       onCellClick();
-    } else {
-      console.log(`🚫 Click blocked - cell already revealed`);
     }
   };
 
-  const handleMouseEnter = () => {
-    console.log(`🟡 HOVER on $${cell.value}`);
-  };
-
   return (
-    <div
-      className="game-cell-container"
-      onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      style={{ border: "2px solid cyan" }} /* DEBUG: Visual indicator */
-    >
+    <div className="game-cell-container" onClick={handleClick}>
       <div className={`game-cell ${shouldShowFlipped ? "flipped" : ""}`}>
         {/* Front Face - Dollar Amount */}
         <div className="game-cell-front">
@@ -59,26 +36,10 @@ export default function GameCell({
         {/* Back Face - Content */}
         <div className="game-cell-back">
           <div className="cell-content">
-            <ContentRenderer cell={cell} onRevealAnswer={onRevealAnswer} />
+            <ContentRenderer cell={cell} />
           </div>
-
-          {/* Answer Overlay - Shows when revealed */}
-          {isRevealed && cell.answer && <AnswerOverlay answer={cell.answer} />}
         </div>
       </div>
-    </div>
-  );
-}
-
-/**
- * AnswerOverlay Component
- * Green overlay displaying the correct answer - stays visible once shown
- */
-function AnswerOverlay({ answer }: { answer: string }) {
-  return (
-    <div className="answer-overlay">
-      <div className="answer-label">Answer:</div>
-      <div className="answer-text">{answer}</div>
     </div>
   );
 }

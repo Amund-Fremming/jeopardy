@@ -3,8 +3,6 @@ import "./ImageDisplay.css";
 
 interface ImageDisplayProps {
   filename: string;
-  showRevealButton?: boolean;
-  onReveal?: (e: React.MouseEvent) => void;
 }
 
 /**
@@ -12,11 +10,7 @@ interface ImageDisplayProps {
  * Displays images from any URL
  * Handles missing images gracefully with error state
  */
-export default function ImageDisplay({
-  filename,
-  showRevealButton,
-  onReveal,
-}: ImageDisplayProps) {
+export default function ImageDisplay({ filename }: ImageDisplayProps) {
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -55,13 +49,6 @@ export default function ImageDisplay({
         onLoad={handleImageLoad}
         onError={handleImageError}
       />
-      {!isLoading && showRevealButton && (
-        <div className="action-buttons">
-          <button className="reveal-button" onClick={onReveal}>
-            Reveal Answer
-          </button>
-        </div>
-      )}
     </div>
   );
 }

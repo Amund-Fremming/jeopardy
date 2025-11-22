@@ -2,8 +2,6 @@ import "./TextDisplay.css";
 
 interface TextDisplayProps {
   text: string;
-  showRevealButton?: boolean;
-  onReveal?: (e: React.MouseEvent) => void;
 }
 
 /**
@@ -11,11 +9,7 @@ interface TextDisplayProps {
  * Displays text content in a centered, readable format
  * Uses orange theme colors for consistency
  */
-export default function TextDisplay({
-  text,
-  showRevealButton,
-  onReveal,
-}: TextDisplayProps) {
+export default function TextDisplay({ text }: TextDisplayProps) {
   // Handle empty text
   if (!text || text.trim().length === 0) {
     return (
@@ -29,13 +23,6 @@ export default function TextDisplay({
   return (
     <div className="text-display">
       <p className="display-text">{text}</p>
-      {showRevealButton && (
-        <div className="action-buttons">
-          <button className="reveal-button" onClick={onReveal}>
-            Reveal Answer
-          </button>
-        </div>
-      )}
     </div>
   );
 }
