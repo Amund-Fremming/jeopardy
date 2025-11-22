@@ -1,0 +1,207 @@
+.score-table-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: var(--space-8) auto 0;
+  padding: var(--space-6);
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.score-table-title {
+  margin: 0 0 var(--space-6) 0;
+  color: var(--orange-primary);
+  font-family: var(--font-header);
+  font-size: var(--font-size-h2);
+  text-align: center;
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.score-table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.team-score-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.team-score-row:hover {
+  border-color: var(--orange-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.team-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.team-name {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-header);
+  font-size: var(--font-size-h3);
+}
+
+.team-players {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.player-badge {
+  padding: var(--space-1) var(--space-3);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+}
+
+.team-score-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.score-display {
+  min-width: 120px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-secondary);
+  border: 2px solid var(--orange-primary);
+  border-radius: var(--radius-md);
+  color: var(--orange-primary);
+  font-family: var(--font-header);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+}
+
+.score-buttons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.score-btn {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-header);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 80px;
+}
+
+.score-btn.increment {
+  background-color: var(--orange-primary);
+  color: var(--bg-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.score-btn.increment:hover {
+  background-color: var(--orange-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md), var(--shadow-glow-sm);
+}
+
+.score-btn.decrement {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+.score-btn.decrement:hover {
+  border-color: var(--orange-primary);
+  background-color: var(--bg-primary);
+  transform: translateY(-2px);
+}
+
+.score-btn:active {
+  transform: translateY(0);
+}
+
+.finish-game-button {
+  width: 100%;
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-header);
+  color: var(--bg-primary);
+  background-color: var(--orange-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-md);
+}
+
+.finish-game-button:hover {
+  background-color: var(--orange-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-md);
+}
+
+.finish-game-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .team-score-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .team-score-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .score-table-container {
+    padding: var(--space-4);
+  }
+
+  .score-display {
+    min-width: 100px;
+    font-size: var(--font-size-base);
+  }
+
+  .score-buttons {
+    flex-direction: column;
+  }
+
+  .score-btn {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .team-score-controls {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+}

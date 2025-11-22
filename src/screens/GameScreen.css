@@ -1,0 +1,109 @@
+.game-screen {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  padding: var(--space-6) 0;
+  overflow-y: auto;
+}
+
+.game-screen__content {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.game-screen__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--space-6);
+  margin-bottom: var(--space-4);
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.game-screen__title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--orange-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.game-screen__back-button {
+  background-color: var(--bg-tertiary);
+  color: var(--orange-primary);
+  border: 2px solid var(--orange-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-5);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.game-screen__back-button:hover {
+  background-color: var(--orange-primary);
+  color: var(--bg-primary);
+  border-color: var(--orange-hover);
+  box-shadow: var(--shadow-md), var(--shadow-glow-sm);
+  transform: translateY(-2px);
+}
+
+.game-screen__back-button:active {
+  background-color: var(--orange-active);
+  border-color: var(--orange-active);
+  transform: translateY(0);
+}
+
+/* Tablet and below */
+@media (max-width: 1024px) {
+  .game-screen {
+    padding: var(--space-4) 0;
+  }
+
+  .game-screen__header {
+    padding: 0 var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+
+  .game-screen__title {
+    font-size: var(--font-size-h2);
+  }
+
+  .game-screen__back-button {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .game-screen {
+    padding: var(--space-3) 0;
+  }
+
+  .game-screen__header {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: stretch;
+    padding: 0 var(--space-3);
+  }
+
+  .game-screen__title {
+    font-size: var(--font-size-h3);
+    text-align: center;
+  }
+
+  .game-screen__back-button {
+    width: 100%;
+  }
+}

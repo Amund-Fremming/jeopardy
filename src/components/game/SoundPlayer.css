@@ -1,0 +1,196 @@
+/* Sound Player Container */
+.sound-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 600px;
+  padding: var(--space-4);
+}
+
+/* YouTube Container - Responsive wrapper */
+.youtube-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  background-color: #000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.youtube-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Player Controls */
+.player-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+/* Play Button */
+.play-button {
+  background-color: var(--orange-primary);
+  color: var(--text-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+  min-width: 140px;
+}
+
+.play-button:hover:not(:disabled) {
+  background-color: var(--orange-hover);
+  box-shadow: var(--shadow-md), var(--shadow-glow-sm);
+  transform: translateY(-1px);
+}
+
+.play-button:active:not(:disabled) {
+  background-color: var(--orange-active);
+  transform: translateY(0);
+}
+
+.play-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Reveal Button */
+.reveal-button {
+  background-color: var(--bg-tertiary);
+  color: var(--orange-primary);
+  border: 2px solid var(--orange-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  min-width: 140px;
+}
+
+.reveal-button:hover {
+  background-color: var(--orange-primary);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-glow-sm);
+  transform: translateY(-1px);
+}
+
+.reveal-button:active {
+  transform: translateY(0);
+}
+
+/* Mark Button */
+.mark-button {
+  background-color: var(--color-error);
+  color: var(--text-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  min-width: 140px;
+}
+
+.mark-button:hover {
+  background-color: #d32f2f;
+  box-shadow: var(--shadow-glow-sm);
+  transform: translateY(-1px);
+}
+
+.mark-button:active {
+  transform: translateY(0);
+}
+
+.reveal-button:active {
+  transform: translateY(0);
+}
+
+/* Mark Button */
+.mark-button {
+  background-color: var(--color-error);
+  color: var(--text-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  min-width: 140px;
+}
+
+.mark-button:hover {
+  background-color: #d32f2f;
+  box-shadow: var(--shadow-glow-sm);
+  transform: translateY(-1px);
+}
+
+.mark-button:active {
+  transform: translateY(0);
+}
+
+/* Timestamp Info */
+.timestamp-info {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Error State */
+.sound-player-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.error-icon {
+  font-size: 3rem;
+  filter: grayscale(1);
+}
+
+.error-message {
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-error);
+}
+
+.error-details {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  word-break: break-all;
+  max-width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sound-player {
+    max-width: 100%;
+    padding: var(--space-2);
+  }
+
+  .play-button {
+    width: 100%;
+    max-width: 200px;
+  }
+}

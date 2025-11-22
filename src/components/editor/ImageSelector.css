@@ -1,0 +1,96 @@
+.image-selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.image-selector-label {
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.image-url-input {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  padding: var(--space-3);
+  outline: none;
+  width: 100%;
+  transition: all var(--transition-base);
+}
+
+.image-url-input:hover {
+  border-color: var(--orange-primary);
+}
+
+.image-url-input:focus {
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.1);
+}
+
+.image-url-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.image-selector-dropdown {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  padding: var(--space-3);
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  transition: all var(--transition-base);
+}
+
+.image-selector-dropdown:hover {
+  border-color: var(--orange-primary);
+}
+
+.image-selector-dropdown:focus {
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.1);
+}
+
+.image-selector-dropdown option {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: var(--space-2);
+}
+
+.image-selector-dropdown option:first-child {
+  color: var(--text-secondary);
+}
+
+/* Empty state message */
+.image-selector-empty {
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  margin-top: var(--space-2);
+  padding: var(--space-3);
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-warning);
+}
+
+.image-selector-empty code {
+  background-color: var(--bg-primary);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.8rem;
+  color: var(--orange-primary);
+}

@@ -1,0 +1,208 @@
+.team-assignment-screen {
+  min-height: 100vh;
+  padding: var(--space-8);
+  background-color: var(--bg-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-assignment-container {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.team-assignment-header {
+  text-align: center;
+}
+
+.team-assignment-header h1 {
+  margin: 0 0 var(--space-3) 0;
+  color: var(--text-primary);
+  font-family: var(--font-header);
+  font-size: var(--font-size-h1);
+}
+
+.team-assignment-header .subtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-h3);
+  font-family: var(--font-body);
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-12);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--border-color);
+  border-top-color: var(--orange-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-state p {
+  color: var(--text-secondary);
+  font-size: var(--font-size-h3);
+}
+
+/* Teams Grid */
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  padding: var(--space-4) 0;
+}
+
+.team-card {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.team-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--orange-primary);
+}
+
+.team-title {
+  margin: 0 0 var(--space-4) 0;
+  color: var(--orange-primary);
+  font-family: var(--font-header);
+  font-size: var(--font-size-h2);
+  text-align: center;
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.player-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.player-name {
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  transition: background-color var(--transition-base);
+}
+
+.player-name:hover {
+  background: var(--border-color);
+}
+
+.empty-team {
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: var(--font-size-sm);
+  padding: var(--space-4);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.action-buttons .button {
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: var(--font-header);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.action-buttons .button.primary {
+  background-color: var(--orange-primary);
+  color: var(--bg-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.action-buttons .button.primary:hover {
+  background-color: var(--orange-hover);
+  box-shadow: var(--shadow-md), var(--shadow-glow-md);
+  transform: translateY(-2px);
+}
+
+.action-buttons .button.secondary {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+.action-buttons .button.secondary:hover {
+  border-color: var(--orange-primary);
+  background-color: var(--bg-primary);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .teams-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-assignment-screen {
+    padding: var(--space-4);
+  }
+
+  .team-assignment-container {
+    gap: var(--space-6);
+  }
+
+  .teams-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .action-buttons .button {
+    width: 100%;
+  }
+}

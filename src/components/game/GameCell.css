@@ -1,0 +1,156 @@
+/* Game Cell Container - Provides 3D perspective for flip animation */
+.game-cell-container {
+  perspective: 1000px;
+  min-height: 120px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Game Cell - Main flip card with 3D transform */
+.game-cell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 120px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+  border-radius: var(--radius-md);
+}
+
+/* Apply flip transform when cell is flipped or marked */
+.game-cell.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back Faces - Common styling */
+.game-cell-front,
+.game-cell-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 120px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  transition: border-color var(--transition-base);
+}
+
+/* Front Face - Dollar Amount (State 1: Unflipped) */
+.game-cell-front {
+  background-color: var(--bg-secondary);
+  transform: rotateY(0deg);
+}
+
+.game-cell-container:hover .game-cell-front {
+  border-color: var(--orange-hover);
+  background-color: var(--bg-tertiary);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.dollar-amount {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--orange-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Back Face - Content Display (State 2: Flipped, State 3: Marked) */
+.game-cell-back {
+  background-color: var(--bg-secondary);
+  transform: rotateY(180deg);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-cell-container:hover .game-cell-back {
+  border-color: var(--orange-hover);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* Cell Content Container */
+.cell-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  color: var(--text-primary);
+}
+
+/* Answer Overlay Component - State 3 (Revealed) */
+.answer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(204, 120, 92, 0.95) 0%, rgba(204, 120, 92, 0.85) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  animation: fadeIn 0.3s ease-out forwards;
+  z-index: var(--z-base);
+  padding: var(--space-4);
+  gap: var(--space-2);
+}
+
+.answer-label {
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.answer-text {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  text-align: center;
+  word-wrap: break-word;
+  max-width: 90%;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* X Overlay Component - State 4 (Marked) */
+.x-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 30, 30, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  animation: fadeIn 0.3s ease-out forwards;
+  z-index: var(--z-elevated);
+}
+
+.x-mark {
+  font-size: 8rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-error);
+  line-height: 1;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  user-select: none;
+}
+
+/* Hover effect on marked cells */
+.game-cell-container:hover .x-overlay {
+  background-color: rgba(30, 30, 30, 0.9);
+}
+
+/* Active state feedback */
+.game-cell-container:active .game-cell-front,
+.game-cell-container:active .game-cell-back {
+  border-color: var(--orange-active);
+}

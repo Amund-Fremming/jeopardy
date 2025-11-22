@@ -1,0 +1,35 @@
+.clickable-header {
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition-base);
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-header);
+  font-size: var(--font-size-h1);
+  text-align: center;
+}
+
+.clickable-header:hover {
+  color: var(--orange-primary);
+  transform: scale(1.02);
+}
+
+.clickable-header:active {
+  transform: scale(0.98);
+}
+
+.clickable-header:focus {
+  outline: 2px solid var(--orange-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* Game mode styling - subtle black-on-black */
+.clickable-header.game-mode {
+  opacity: 0.15;
+}
+
+.clickable-header.game-mode:hover {
+  opacity: 0.4;
+  color: var(--text-primary);
+}

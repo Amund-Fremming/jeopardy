@@ -1,0 +1,94 @@
+.sound-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.sound-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sound-input-label {
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sound-input-text,
+.sound-input-number {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  padding: var(--space-3);
+  outline: none;
+  transition: all var(--transition-base);
+}
+
+.sound-input-text:focus,
+.sound-input-number:focus {
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.1);
+}
+
+.sound-input-text:hover,
+.sound-input-number:hover {
+  border-color: var(--orange-primary);
+}
+
+.sound-input-text::placeholder,
+.sound-input-number::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+/* Error state */
+.sound-input-text.error,
+.sound-input-number.error {
+  border-color: var(--color-error);
+}
+
+.sound-input-text.error:focus,
+.sound-input-number.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.sound-input-error {
+  color: var(--color-error);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  margin-top: var(--space-1);
+}
+
+/* Timestamps row */
+.sound-input-timestamps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+/* Number input specific styles */
+.sound-input-number {
+  width: 100%;
+}
+
+/* Remove spinner arrows in Chrome, Safari, Edge, Opera */
+.sound-input-number::-webkit-outer-spin-button,
+.sound-input-number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove spinner arrows in Firefox */
+.sound-input-number {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

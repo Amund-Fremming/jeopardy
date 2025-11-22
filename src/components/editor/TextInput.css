@@ -1,0 +1,92 @@
+.text-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.text-input-label {
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.text-input-textarea {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  padding: var(--space-3);
+  outline: none;
+  width: 100%;
+  min-height: 4rem;
+  resize: vertical;
+  transition: all var(--transition-base);
+}
+
+.text-input-textarea:focus {
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.1);
+}
+
+.text-input-textarea:hover {
+  border-color: var(--orange-primary);
+}
+
+.text-input-textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+/* Scrollbar styling for webkit browsers */
+.text-input-textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.text-input-textarea::-webkit-scrollbar-track {
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+}
+
+.text-input-textarea::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+.text-input-textarea::-webkit-scrollbar-thumb:hover {
+  background-color: var(--orange-primary);
+}
+
+/* Answer input field */
+.text-input-answer {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  padding: var(--space-3);
+  outline: none;
+  width: 100%;
+  transition: all var(--transition-base);
+}
+
+.text-input-answer:hover {
+  border-color: var(--orange-primary);
+}
+
+.text-input-answer:focus {
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.1);
+}
+
+.text-input-answer::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}

@@ -1,0 +1,29 @@
+.type-selector {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--orange-primary);
+  border-radius: var(--radius-sm);
+  color: var(--orange-primary);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  transition: all var(--transition-base);
+}
+
+.type-selector:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--orange-hover);
+}
+
+.type-selector:focus {
+  border-color: var(--orange-hover);
+  box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.1);
+}
+
+.type-selector option {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
