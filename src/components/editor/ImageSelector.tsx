@@ -9,10 +9,7 @@ interface ImageSelectorProps {
  * ImageSelector component - Text input for image URLs
  * Users can paste any image URL directly
  */
-export default function ImageSelector({
-  value,
-  onChange,
-}: ImageSelectorProps) {
+export default function ImageSelector({ value, onChange }: ImageSelectorProps) {
   return (
     <div className="image-selector">
       <label htmlFor="image-url" className="image-selector-label">

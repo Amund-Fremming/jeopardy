@@ -11,10 +11,7 @@ interface SoundInputProps {
  * SoundInput component - YouTube URL and timestamp inputs
  * Validates YouTube URL format and numeric timestamps
  */
-export default function SoundInput({
-  value,
-  onChange,
-}: SoundInputProps) {
+export default function SoundInput({ value, onChange }: SoundInputProps) {
   const [urlError, setUrlError] = useState<string>("");
   const [startError, setStartError] = useState<string>("");
   const [endError, setEndError] = useState<string>("");
