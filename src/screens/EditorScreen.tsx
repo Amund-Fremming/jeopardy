@@ -153,10 +153,6 @@ export default function EditorScreen({
                 onChange={(content) =>
                   onUpdateCell(rowIndex, colIndex, { content })
                 }
-                answer={cell.answer}
-                onAnswerChange={(answer) =>
-                  onUpdateCell(rowIndex, colIndex, { answer })
-                }
               />
             ))
           )}

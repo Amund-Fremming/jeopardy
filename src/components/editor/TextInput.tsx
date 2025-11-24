@@ -3,8 +3,6 @@ import "./TextInput.css";
 interface TextInputProps {
   value: string;
   onChange: (value: string) => void;
-  answer?: string;
-  onAnswerChange?: (answer: string) => void;
   placeholder?: string;
 }
 
@@ -15,8 +13,6 @@ interface TextInputProps {
 export default function TextInput({
   value,
   onChange,
-  answer = "",
-  onAnswerChange,
   placeholder = "Enter your clue text here...",
 }: TextInputProps) {
   return (
@@ -31,22 +27,6 @@ export default function TextInput({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         rows={3}
-      />
-
-      <label
-        htmlFor="text-answer"
-        className="text-input-label"
-        style={{ marginTop: "var(--space-3)" }}
-      >
-        Correct Answer
-      </label>
-      <input
-        id="text-answer"
-        type="text"
-        className="text-input-answer"
-        value={answer}
-        onChange={(e) => onAnswerChange?.(e.target.value)}
-        placeholder="Enter the correct answer..."
       />
     </div>
   );

@@ -3,8 +3,6 @@ import "./ImageSelector.css";
 interface ImageSelectorProps {
   value: string;
   onChange: (value: string) => void;
-  answer?: string;
-  onAnswerChange?: (answer: string) => void;
 }
 
 /**
@@ -14,8 +12,6 @@ interface ImageSelectorProps {
 export default function ImageSelector({
   value,
   onChange,
-  answer = "",
-  onAnswerChange,
 }: ImageSelectorProps) {
   return (
     <div className="image-selector">
@@ -25,26 +21,10 @@ export default function ImageSelector({
       <input
         id="image-url"
         type="text"
-        className="image-url-input"
+        className="image-selector-input"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="https://example.com/image.jpg"
-      />
-
-      <label
-        htmlFor="image-answer"
-        className="image-selector-label"
-        style={{ marginTop: "var(--space-3)" }}
-      >
-        Correct Answer
-      </label>
-      <input
-        id="image-answer"
-        type="text"
-        className="image-url-input"
-        value={answer}
-        onChange={(e) => onAnswerChange?.(e.target.value)}
-        placeholder="Enter the correct answer..."
+        placeholder="Enter image URL..."
       />
     </div>
   );

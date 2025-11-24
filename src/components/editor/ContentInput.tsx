@@ -8,8 +8,6 @@ interface ContentInputProps {
   type: CellType;
   content: SoundContent | string;
   onChange: (content: SoundContent | string) => void;
-  answer?: string;
-  onAnswerChange?: (answer: string) => void;
 }
 
 /**
@@ -20,8 +18,6 @@ export default function ContentInput({
   type,
   content,
   onChange,
-  answer = "",
-  onAnswerChange,
 }: ContentInputProps) {
   /**
    * Type guard to check if content is SoundContent
@@ -47,8 +43,6 @@ export default function ContentInput({
           <SoundInput
             value={soundContent}
             onChange={(newContent) => onChange(newContent)}
-            answer={answer}
-            onAnswerChange={onAnswerChange}
           />
         );
 
@@ -60,8 +54,6 @@ export default function ContentInput({
           <ImageSelector
             value={imageContent}
             onChange={(newContent) => onChange(newContent)}
-            answer={answer}
-            onAnswerChange={onAnswerChange}
           />
         );
 
@@ -73,8 +65,6 @@ export default function ContentInput({
           <TextInput
             value={textContent}
             onChange={(newContent) => onChange(newContent)}
-            answer={answer}
-            onAnswerChange={onAnswerChange}
           />
         );
 

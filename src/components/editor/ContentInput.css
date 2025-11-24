@@ -1,7 +1,17 @@
 .content-input {
   width: 100%;
+  min-height: 140px;
   display: flex;
   flex-direction: column;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  background-color: var(--bg-secondary);
+  transition: border-color var(--transition-base);
+}
+
+.content-input:hover {
+  border-color: var(--orange-hover);
 }
 
 .content-input-error {

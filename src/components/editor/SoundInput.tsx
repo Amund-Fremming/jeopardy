@@ -5,8 +5,6 @@ import "./SoundInput.css";
 interface SoundInputProps {
   value: SoundContent;
   onChange: (value: SoundContent) => void;
-  answer?: string;
-  onAnswerChange?: (answer: string) => void;
 }
 
 /**
@@ -16,8 +14,6 @@ interface SoundInputProps {
 export default function SoundInput({
   value,
   onChange,
-  answer = "",
-  onAnswerChange,
 }: SoundInputProps) {
   const [urlError, setUrlError] = useState<string>("");
   const [startError, setStartError] = useState<string>("");
@@ -152,23 +148,6 @@ export default function SoundInput({
           />
           {endError && <span className="sound-input-error">{endError}</span>}
         </div>
-      </div>
-
-      <div
-        className="sound-input-field"
-        style={{ marginTop: "var(--space-3)" }}
-      >
-        <label htmlFor="sound-answer" className="sound-input-label">
-          Correct Answer
-        </label>
-        <input
-          id="sound-answer"
-          type="text"
-          className="sound-input-text"
-          value={answer}
-          onChange={(e) => onAnswerChange?.(e.target.value)}
-          placeholder="Enter the correct answer..."
-        />
       </div>
     </div>
   );
