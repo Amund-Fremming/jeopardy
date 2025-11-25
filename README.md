@@ -1,5 +1,7 @@
 # Jeopardy Game Board
 
+> Its live [here](https://jpardy.netlify.app)
+
 A fully-featured Jeopardy game board application built entirely by AI agents through orchestrated planning and execution. Supports custom content types (YouTube videos with timestamps, images, and text) in each game cell.
 
 ## ✨ Features
