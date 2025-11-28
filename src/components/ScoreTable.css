@@ -28,6 +28,7 @@
 
 .team-score-row {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-4);
@@ -76,6 +77,7 @@
 
 .team-score-controls {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: var(--space-4);
 }
@@ -95,6 +97,7 @@
 
 .score-buttons {
   display: flex;
+  flex-wrap: nowrap;
   gap: var(--space-2);
 }
 
@@ -202,6 +205,28 @@
 
   .team-score-controls {
     flex-direction: column;
+    gap: var(--space-3);
+  }
+}
+
+/* iPhone and smaller devices */
+@media (max-width: 480px) {
+  .score-table-container {
+    padding: var(--space-3);
+  }
+
+  .score-display {
+    min-width: 80px;
+    font-size: var(--font-size-sm);
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .team-name {
+    font-size: var(--font-size-base);
+  }
+
+  .team-score-row {
+    padding: var(--space-3);
     gap: var(--space-3);
   }
 }

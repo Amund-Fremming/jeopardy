@@ -129,6 +129,7 @@
 /* Action Buttons */
 .action-buttons {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   gap: var(--space-4);
@@ -180,7 +181,12 @@
   }
 
   .action-buttons {
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .action-buttons .button {
+    width: 100%;
   }
 }
 
@@ -196,13 +202,28 @@
   .teams-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* iPhone and smaller devices */
+@media (max-width: 480px) {
+  .team-assignment-screen {
+    padding: var(--space-3);
+  }
+
+  .team-assignment-container {
+    gap: var(--space-4);
+  }
+
+  .team-card {
+    padding: var(--space-4);
+  }
 
   .action-buttons {
-    flex-direction: column;
-    width: 100%;
+    gap: var(--space-3);
   }
 
   .action-buttons .button {
-    width: 100%;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
   }
 }
