@@ -16,6 +16,7 @@
 
 .game-screen__header {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   padding: 0 var(--space-6);
@@ -105,5 +106,26 @@
 
   .game-screen__back-button {
     width: 100%;
+  }
+}
+
+/* iPhone and smaller devices */
+@media (max-width: 480px) {
+  .game-screen {
+    padding: var(--space-2) 0;
+  }
+
+  .game-screen__header {
+    padding: 0 var(--space-2);
+    gap: var(--space-2);
+  }
+
+  .game-screen__title {
+    font-size: var(--font-size-base);
+  }
+
+  .game-screen__back-button {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
   }
 }

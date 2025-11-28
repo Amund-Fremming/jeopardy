@@ -1,6 +1,7 @@
 .category-header {
   /* No box styling - pure text header above columns */
   display: flex;
+  flex-wrap: nowrap;
   align-items: flex-end;
   justify-content: center;
   padding: var(--space-2) var(--space-3);

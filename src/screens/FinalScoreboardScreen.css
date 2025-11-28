@@ -127,6 +127,7 @@
 
 .leaderboard-row {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: var(--space-4);
   padding: var(--space-4);
@@ -231,7 +232,8 @@
   }
 
   .leaderboard-row {
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .team-final-score {
@@ -274,5 +276,39 @@
 
   .team-final-score {
     font-size: var(--font-size-h3);
+  }
+}
+
+/* iPhone and smaller devices */
+@media (max-width: 480px) {
+  .final-scoreboard-screen {
+    padding: var(--space-3);
+  }
+
+  .winner-team-name {
+    font-size: var(--font-size-h3);
+  }
+
+  .winner-score {
+    font-size: 2rem;
+  }
+
+  .rank-badge {
+    width: 36px;
+    height: 36px;
+    font-size: var(--font-size-sm);
+  }
+
+  .team-name {
+    font-size: var(--font-size-sm);
+  }
+
+  .team-final-score {
+    font-size: var(--font-size-base);
+  }
+
+  .leaderboard-row {
+    padding: var(--space-3);
+    gap: var(--space-3);
   }
 }

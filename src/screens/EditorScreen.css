@@ -17,6 +17,7 @@
 
 .editor-header {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-4);
@@ -217,5 +218,25 @@
   .start-game-button {
     font-size: var(--font-size-base);
     padding: var(--space-3) var(--space-6);
+  }
+}
+
+/* iPhone and smaller devices */
+@media (max-width: 480px) {
+  .editor-screen {
+    padding: var(--space-3);
+  }
+
+  .editor-container {
+    gap: var(--space-4);
+  }
+
+  .team-configuration {
+    padding: var(--space-4);
+  }
+
+  .start-game-button {
+    font-size: var(--font-size-sm);
+    padding: var(--space-2) var(--space-4);
   }
 }
